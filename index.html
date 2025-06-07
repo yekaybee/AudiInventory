@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Inventory Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <h1>Sistem Inventory Studio</h1>
+        <nav>
+            <a href="#inventory">Senarai Inventory</a>
+            <a href="#report">Lapor</a>
+        </nav>
+    </header>
+
+    <section id="inventory">
+        <h2>Senarai Peralatan Studio</h2>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Cari peralatan, lokasi..." onkeyup="searchItems()">
+            <select id="filterStudio" onchange="searchItems()">
+                <option value="">Semua Studio</option>
+                <option value="Auditorium Perdana">Auditorium Perdana</option>
+                <option value="Auditorium Seri Angkasa">Auditorium Seri Angkasa</option>
+            </select>
+        </div>
+        <div id="inventoryList" class="inventory-grid"></div>
+        <p id="errorMessage" style="color: red; display: none;">Gagal memuat senarai inventory. Sila semak sambungan atau data Google Sheets.</p>
+    </section>
+
+    <section id="report">
+        <h2>Lapor Peralatan</h2>
+        <form id="reportForm">
+            <input type="text" id="itemName" placeholder="Nama Peralatan" required>
+            <input type="text" id="model" placeholder="Model" required>
+            <input type="number" id="quantity" placeholder="Kuantiti" required>
+            <select id="category" required>
+                <option value="" disabled selected>Pilih Kategori</option>
+                <option value="Kamera">Kamera</option>
+                <option value="Lens">Lens</option>
+                <option value="Tripod">Tripod</option>
+                <option value="Pedestal">Pedestal</option>
+                <option value="Monitor">Monitor</option>
+                <option value="Sparepart">Sparepart</option>
+                <option value="Lain-lain">Lain-lain</option>
+            </select>
+            <select id="studio" required>
+                <option value="" disabled selected>Pilih Studio</option>
+                <option value="Auditorium Perdana">Auditorium Perdana</option>
+                <option value="Auditorium Seri Angkasa">Auditorium Seri Angkasa</option>
+            </select>
+            <select id="status" required>
+                <option value="" disabled selected>Pilih Status</option>
+                <option value="Ada">Ada</option>
+                <option value="Hilang">Hilang</option>
+                <option value="Rosak">Rosak</option>
+                <option value="Dipinjam">Dipinjam</option>
+            </select>
+            <button type="submit">Hantar Laporan</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
